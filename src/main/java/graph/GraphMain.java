@@ -29,6 +29,14 @@ public class GraphMain {
     		System.out.println ("Invalid configuration");
     		System.exit(0);
     	}
+        switch (Integer.parseInt(args[0])) {
+            case 1 -> BFS = true;
+            case 2 -> DFS = true;
+        }
+        switch (Integer.parseInt(args[2])) {
+            case 1 -> DIRECTED = true;
+            case 2 -> UNDIRECTED = true;
+        }
         // @DEBUG
     	if (DFS) System.out.println("DFS Selected");
     	if (BFS) System.out.println("BFS Selected");
@@ -146,19 +154,13 @@ public class GraphMain {
 		// Checks args[0] algorithm to execute
 		int algorithm = Integer.valueOf(args[0]);
 		if (algorithm!=1 && algorithm!=2) return false;
-        switch (algorithm) {
-            case 1 -> BFS = true;
-            case 2 -> DFS = true;
-        }
+
 		// Note: No checks for args[1] here. Your DFS et BFS algorithms will verify that before executing
 		
 		// Checks args[2] for type of graph
 		int typeGraph = Integer.valueOf(args[2]);
         if  (!(typeGraph == 1 || typeGraph == 2)) return false;
-        switch (typeGraph) {
-            case 1 -> DIRECTED = true;
-            case 2 -> UNDIRECTED = true;
-        }
+
         return true;
 		// Note: The existence of the file name is not verified here
     } // of validConfiguration

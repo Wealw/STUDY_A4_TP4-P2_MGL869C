@@ -201,7 +201,9 @@ public class Graph {
     public void BFS(String vertexName) {
         List<Vertex> ordered_vertices = new LinkedList<>();
         ordered_vertices.add(findsVertex(vertexName));
-        while ( ordered_vertices.size() < vertices.size()){
+        int last_ordered_vertices_size = -1;
+        while ( ordered_vertices.size() < vertices.size() && last_ordered_vertices_size != vertices.size()){
+            last_ordered_vertices_size = ordered_vertices.size();
             for (int i = 0 ; i < ordered_vertices.size() ; i++){
                 for (Edge edge : edges){
                     if (edge.start == ordered_vertices.get(i) && !ordered_vertices.contains(edge.end)){
@@ -209,7 +211,6 @@ public class Graph {
                     }
                 }
             }
-
         }
         for (Vertex vertex : ordered_vertices){
             System.out.print(vertex.name + " ");
